@@ -65,6 +65,30 @@ while (true) {
 }
 ```
 
+## Composer and `ext-pcntl`
+
+Once the DLL is loaded, Composer sees it as the real thing: `composer show
+--platform` lists `ext-pcntl` with your PHP's version, so packages that
+`require` `ext-pcntl` (Laravel Horizon, Symfony Console's signal support,
+`spatie/async` and others) install and run without changes.
+
+If Composer runs under a PHP that does not have the extension loaded (a CI
+image, a different `php.exe`, or before you run `install.cmd`), tell it to
+assume the extension is present on the target machine:
+
+```json
+{
+    "config": {
+        "platform": {
+            "ext-pcntl": "8.4"
+        }
+    }
+}
+```
+
+Use the same major.minor as your PHP. Remove the override once the extension
+is loaded in the PHP that runs Composer.
+
 ## What works, and how
 
 Every signal source on Windows is mapped onto a Win32 mechanism and funnelled
