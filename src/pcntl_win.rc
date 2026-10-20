@@ -1,0 +1,35 @@
+#include <winver.h>
+
+#ifndef PCNTL_PHP_VERSION
+#define PCNTL_PHP_VERSION "8.x"
+#endif
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+ FILEFLAGS 0
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_DLL
+ FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Emulation of ext/pcntl (signals, wait, alarm, exec) for PHP on Windows"
+            VALUE "CompanyName", "pcntl for Windows contributors"
+            VALUE "FileDescription", "pcntl for Windows (PHP extension) for PHP " PCNTL_PHP_VERSION
+            VALUE "FileVersion", "1.0.0"
+            VALUE "InternalName", "php_pcntl"
+            VALUE "LegalCopyright", "MIT; parts derived from php-src ext/pcntl, PHP License 3.01"
+            VALUE "OriginalFilename", "php_pcntl.dll"
+            VALUE "ProductName", "pcntl for Windows"
+            VALUE "ProductVersion", "1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

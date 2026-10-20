@@ -1,0 +1,329 @@
+/*
+ * Argument information for pcntl for Windows.
+ *
+ * Derived from php-src ext/pcntl/pcntl_arginfo.h (generated from
+ * pcntl.stub.php, Copyright (c) The PHP Group, PHP License 3.01), rewritten
+ * by hand so that only arginfo macros stable across PHP 8.2 - 8.6 are used
+ * and so that every function is unconditionally available on Windows.
+ */
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_fork, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_waitpid, 0, 2, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, process_id, IS_LONG, 0)
+	ZEND_ARG_INFO(1, status)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "0")
+	ZEND_ARG_INFO_WITH_DEFAULT_VALUE(1, resource_usage, "[]")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_waitid, 0, 0, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, idtype, IS_LONG, 0, "P_ALL")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, id, IS_LONG, 1, "null")
+	ZEND_ARG_INFO_WITH_DEFAULT_VALUE(1, info, "[]")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "WEXITED")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_wait, 0, 1, IS_LONG, 0)
+	ZEND_ARG_INFO(1, status)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "0")
+	ZEND_ARG_INFO_WITH_DEFAULT_VALUE(1, resource_usage, "[]")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_signal, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, signal, IS_LONG, 0)
+	ZEND_ARG_INFO(0, handler)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, restart_syscalls, _IS_BOOL, 0, "true")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_pcntl_signal_get_handler, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, signal, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_signal_dispatch, 0, 0, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_sigprocmask, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, mode, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, signals, IS_ARRAY, 0)
+	ZEND_ARG_INFO_WITH_DEFAULT_VALUE(1, old_signals, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_MASK_EX(arginfo_pcntl_sigwaitinfo, 0, 1, MAY_BE_LONG|MAY_BE_FALSE)
+	ZEND_ARG_TYPE_INFO(0, signals, IS_ARRAY, 0)
+	ZEND_ARG_INFO_WITH_DEFAULT_VALUE(1, info, "[]")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_MASK_EX(arginfo_pcntl_sigtimedwait, 0, 1, MAY_BE_LONG|MAY_BE_FALSE)
+	ZEND_ARG_TYPE_INFO(0, signals, IS_ARRAY, 0)
+	ZEND_ARG_INFO_WITH_DEFAULT_VALUE(1, info, "[]")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, seconds, IS_LONG, 0, "0")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, nanoseconds, IS_LONG, 0, "0")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_wifexited, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, status, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_pcntl_wifstopped arginfo_pcntl_wifexited
+#define arginfo_pcntl_wifcontinued arginfo_pcntl_wifexited
+#define arginfo_pcntl_wifsignaled arginfo_pcntl_wifexited
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_MASK_EX(arginfo_pcntl_wexitstatus, 0, 1, MAY_BE_LONG|MAY_BE_FALSE)
+	ZEND_ARG_TYPE_INFO(0, status, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_pcntl_wtermsig arginfo_pcntl_wexitstatus
+#define arginfo_pcntl_wstopsig arginfo_pcntl_wexitstatus
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_exec, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, path, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, args, IS_ARRAY, 0, "[]")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, env_vars, IS_ARRAY, 0, "[]")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_alarm, 0, 1, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, seconds, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_pcntl_get_last_error arginfo_pcntl_fork
+#define arginfo_pcntl_errno arginfo_pcntl_fork
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_MASK_EX(arginfo_pcntl_getpriority, 0, 0, MAY_BE_LONG|MAY_BE_FALSE)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, process_id, IS_LONG, 1, "null")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, mode, IS_LONG, 0, "PRIO_PROCESS")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_setpriority, 0, 1, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, priority, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, process_id, IS_LONG, 1, "null")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, mode, IS_LONG, 0, "PRIO_PROCESS")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_strerror, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, error_code, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_async_signals, 0, 0, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, enable, _IS_BOOL, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_MASK_EX(arginfo_pcntl_getcpuaffinity, 0, 0, MAY_BE_ARRAY|MAY_BE_FALSE)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, process_id, IS_LONG, 1, "null")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_setcpuaffinity, 0, 0, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, process_id, IS_LONG, 1, "null")
+	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, cpu_ids, IS_ARRAY, 0, "[]")
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_getcpu, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_pcntl_getqos_class, 0, 0, Pcntl\\QosClass, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_pcntl_setqos_class, 0, 0, IS_VOID, 0)
+	ZEND_ARG_OBJ_INFO_WITH_DEFAULT_VALUE(0, qos_class, Pcntl\\QosClass, 0, "Pcntl\\QosClass::Default")
+ZEND_END_ARG_INFO()
+
+/* Windows-only companions to posix_kill() and friends (ext/posix never exists on Windows) */
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_posix_kill, 0, 2, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, process_id, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, signal, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_posix_getpid, 0, 0, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+#define arginfo_posix_getppid arginfo_posix_getpid
+#define arginfo_posix_get_last_error arginfo_posix_getpid
+#define arginfo_posix_errno arginfo_posix_getpid
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_posix_strerror, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, error_code, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_FUNCTION(pcntl_fork);
+ZEND_FUNCTION(pcntl_waitpid);
+ZEND_FUNCTION(pcntl_waitid);
+ZEND_FUNCTION(pcntl_wait);
+ZEND_FUNCTION(pcntl_signal);
+ZEND_FUNCTION(pcntl_signal_get_handler);
+ZEND_FUNCTION(pcntl_signal_dispatch);
+ZEND_FUNCTION(pcntl_sigprocmask);
+ZEND_FUNCTION(pcntl_sigwaitinfo);
+ZEND_FUNCTION(pcntl_sigtimedwait);
+ZEND_FUNCTION(pcntl_wifexited);
+ZEND_FUNCTION(pcntl_wifstopped);
+ZEND_FUNCTION(pcntl_wifcontinued);
+ZEND_FUNCTION(pcntl_wifsignaled);
+ZEND_FUNCTION(pcntl_wexitstatus);
+ZEND_FUNCTION(pcntl_wtermsig);
+ZEND_FUNCTION(pcntl_wstopsig);
+ZEND_FUNCTION(pcntl_exec);
+ZEND_FUNCTION(pcntl_alarm);
+ZEND_FUNCTION(pcntl_get_last_error);
+ZEND_FUNCTION(pcntl_getpriority);
+ZEND_FUNCTION(pcntl_setpriority);
+ZEND_FUNCTION(pcntl_strerror);
+ZEND_FUNCTION(pcntl_async_signals);
+ZEND_FUNCTION(pcntl_getcpuaffinity);
+ZEND_FUNCTION(pcntl_setcpuaffinity);
+ZEND_FUNCTION(pcntl_getcpu);
+ZEND_FUNCTION(pcntl_getqos_class);
+ZEND_FUNCTION(pcntl_setqos_class);
+
+ZEND_FUNCTION(posix_kill);
+ZEND_FUNCTION(posix_getpid);
+ZEND_FUNCTION(posix_getppid);
+ZEND_FUNCTION(posix_get_last_error);
+ZEND_FUNCTION(posix_strerror);
+
+static const zend_function_entry ext_functions[] = {
+	ZEND_FE(pcntl_fork, arginfo_pcntl_fork)
+	ZEND_FE(pcntl_waitpid, arginfo_pcntl_waitpid)
+	ZEND_FE(pcntl_waitid, arginfo_pcntl_waitid)
+	ZEND_FE(pcntl_wait, arginfo_pcntl_wait)
+	ZEND_FE(pcntl_signal, arginfo_pcntl_signal)
+	ZEND_FE(pcntl_signal_get_handler, arginfo_pcntl_signal_get_handler)
+	ZEND_FE(pcntl_signal_dispatch, arginfo_pcntl_signal_dispatch)
+	ZEND_FE(pcntl_sigprocmask, arginfo_pcntl_sigprocmask)
+	ZEND_FE(pcntl_sigwaitinfo, arginfo_pcntl_sigwaitinfo)
+	ZEND_FE(pcntl_sigtimedwait, arginfo_pcntl_sigtimedwait)
+	ZEND_FE(pcntl_wifexited, arginfo_pcntl_wifexited)
+	ZEND_FE(pcntl_wifstopped, arginfo_pcntl_wifstopped)
+	ZEND_FE(pcntl_wifcontinued, arginfo_pcntl_wifcontinued)
+	ZEND_FE(pcntl_wifsignaled, arginfo_pcntl_wifsignaled)
+	ZEND_FE(pcntl_wexitstatus, arginfo_pcntl_wexitstatus)
+	ZEND_FE(pcntl_wtermsig, arginfo_pcntl_wtermsig)
+	ZEND_FE(pcntl_wstopsig, arginfo_pcntl_wstopsig)
+	ZEND_FE(pcntl_exec, arginfo_pcntl_exec)
+	ZEND_FE(pcntl_alarm, arginfo_pcntl_alarm)
+	ZEND_FE(pcntl_get_last_error, arginfo_pcntl_get_last_error)
+	ZEND_FALIAS(pcntl_errno, pcntl_get_last_error, arginfo_pcntl_errno)
+	ZEND_FE(pcntl_getpriority, arginfo_pcntl_getpriority)
+	ZEND_FE(pcntl_setpriority, arginfo_pcntl_setpriority)
+	ZEND_FE(pcntl_strerror, arginfo_pcntl_strerror)
+	ZEND_FE(pcntl_async_signals, arginfo_pcntl_async_signals)
+	ZEND_FE(pcntl_getcpuaffinity, arginfo_pcntl_getcpuaffinity)
+	ZEND_FE(pcntl_setcpuaffinity, arginfo_pcntl_setcpuaffinity)
+	ZEND_FE(pcntl_getcpu, arginfo_pcntl_getcpu)
+	ZEND_FE(pcntl_getqos_class, arginfo_pcntl_getqos_class)
+	ZEND_FE(pcntl_setqos_class, arginfo_pcntl_setqos_class)
+	ZEND_FE_END
+};
+
+/* Registered separately at MINIT, only when no posix_* functions already exist and pcntl.posix_functions=1 */
+static const zend_function_entry posix_shim_functions[] = {
+	ZEND_FE(posix_kill, arginfo_posix_kill)
+	ZEND_FE(posix_getpid, arginfo_posix_getpid)
+	ZEND_FE(posix_getppid, arginfo_posix_getppid)
+	ZEND_FE(posix_get_last_error, arginfo_posix_get_last_error)
+	ZEND_FALIAS(posix_errno, posix_get_last_error, arginfo_posix_errno)
+	ZEND_FE(posix_strerror, arginfo_posix_strerror)
+	ZEND_FE_END
+};
+
+static void register_pcntl_symbols(int module_number)
+{
+	REGISTER_LONG_CONSTANT("WNOHANG", PCNTL_WNOHANG, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("WUNTRACED", PCNTL_WUNTRACED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("WCONTINUED", PCNTL_WCONTINUED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("WEXITED", PCNTL_WEXITED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("WSTOPPED", PCNTL_WSTOPPED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("WNOWAIT", PCNTL_WNOWAIT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("P_ALL", PCNTL_P_ALL, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("P_PID", PCNTL_P_PID, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("P_PGID", PCNTL_P_PGID, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIG_IGN", PCNTL_SIG_IGN, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIG_DFL", PCNTL_SIG_DFL, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIG_ERR", PCNTL_SIG_ERR, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGHUP", PSIG_HUP, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGINT", PSIG_INT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGQUIT", PSIG_QUIT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGILL", PSIG_ILL, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGTRAP", PSIG_TRAP, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGABRT", PSIG_ABRT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGIOT", PSIG_ABRT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGBUS", PSIG_BUS, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGFPE", PSIG_FPE, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGKILL", PSIG_KILL, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGUSR1", PSIG_USR1, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGSEGV", PSIG_SEGV, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGUSR2", PSIG_USR2, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGPIPE", PSIG_PIPE, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGALRM", PSIG_ALRM, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGTERM", PSIG_TERM, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGSTKFLT", PSIG_STKFLT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGCLD", PSIG_CHLD, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGCHLD", PSIG_CHLD, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGCONT", PSIG_CONT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGSTOP", PSIG_STOP, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGTSTP", PSIG_TSTP, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGTTIN", PSIG_TTIN, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGTTOU", PSIG_TTOU, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGURG", PSIG_URG, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGXCPU", PSIG_XCPU, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGXFSZ", PSIG_XFSZ, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGVTALRM", PSIG_VTALRM, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGPROF", PSIG_PROF, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGWINCH", PSIG_WINCH, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGPOLL", PSIG_IO, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGIO", PSIG_IO, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGPWR", PSIG_PWR, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGSYS", PSIG_SYS, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIGBABY", PSIG_SYS, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PRIO_PGRP", PCNTL_PRIO_PGRP, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PRIO_USER", PCNTL_PRIO_USER, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PRIO_PROCESS", PCNTL_PRIO_PROCESS, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIG_BLOCK", PCNTL_SIG_BLOCK, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIG_UNBLOCK", PCNTL_SIG_UNBLOCK, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SIG_SETMASK", PCNTL_SIG_SETMASK, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SI_USER", PCNTL_SI_USER, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SI_KERNEL", PCNTL_SI_KERNEL, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SI_QUEUE", PCNTL_SI_QUEUE, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SI_TIMER", PCNTL_SI_TIMER, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SI_MESGQ", PCNTL_SI_MESGQ, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SI_ASYNCIO", PCNTL_SI_ASYNCIO, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("SI_TKILL", PCNTL_SI_TKILL, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("CLD_EXITED", PCNTL_CLD_EXITED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("CLD_KILLED", PCNTL_CLD_KILLED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("CLD_DUMPED", PCNTL_CLD_DUMPED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("CLD_TRAPPED", PCNTL_CLD_TRAPPED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("CLD_STOPPED", PCNTL_CLD_STOPPED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("CLD_CONTINUED", PCNTL_CLD_CONTINUED, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EINTR", EINTR, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ECHILD", ECHILD, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EINVAL", EINVAL, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EAGAIN", EAGAIN, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ESRCH", ESRCH, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EACCES", EACCES, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EPERM", EPERM, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ENOMEM", ENOMEM, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_E2BIG", E2BIG, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EFAULT", EFAULT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EIO", EIO, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EISDIR", EISDIR, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_EMFILE", EMFILE, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ENAMETOOLONG", ENAMETOOLONG, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ENFILE", ENFILE, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ENOENT", ENOENT, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ENOEXEC", ENOEXEC, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ENOTDIR", ENOTDIR, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ENOSPC", ENOSPC, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("PCNTL_ENOSYS", ENOSYS, CONST_PERSISTENT);
+}
+
+static zend_class_entry *register_class_Pcntl_QosClass(void)
+{
+	zend_class_entry *class_entry = zend_register_internal_enum("Pcntl\\QosClass", IS_UNDEF, NULL);
+
+	zend_enum_add_case_cstr(class_entry, "UserInteractive", NULL);
+	zend_enum_add_case_cstr(class_entry, "UserInitiated", NULL);
+	zend_enum_add_case_cstr(class_entry, "Default", NULL);
+	zend_enum_add_case_cstr(class_entry, "Utility", NULL);
+	zend_enum_add_case_cstr(class_entry, "Background", NULL);
+
+	return class_entry;
+}
