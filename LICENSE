@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 pcntl for Windows contributors
+Copyright (c) 2026 Laurence Walpole and pcntl for Windows contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,10 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Portions of src/pcntl_win.c and src/pcntl_win_arginfo.h (function signatures,
-argument handling, error messages and signal dispatch logic) are derived from
-the PHP source distribution, ext/pcntl, Copyright (c) The PHP Group, and are
-subject to version 3.01 of the PHP License (https://www.php.net/license/3_01.txt).

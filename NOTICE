@@ -1,0 +1,7 @@
+pcntl for Windows is licensed under the MIT License (see LICENSE).
+
+Portions of src/pcntl_win.c and src/pcntl_win_arginfo.h (function signatures,
+argument handling, error messages and signal dispatch logic) are derived from
+the PHP source distribution, ext/pcntl, Copyright (c) The PHP Group, and are
+subject to version 3.01 of the PHP License:
+https://www.php.net/license/3_01.txt

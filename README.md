@@ -215,5 +215,5 @@ several real bugs along the way.
 
 ## Licence
 
-MIT for the Windows emulation layer. Parts derived from php-src `ext/pcntl`
-are under the PHP License 3.01; see `LICENSE`.
+MIT (see `LICENSE`). Parts derived from php-src `ext/pcntl` are under the
+PHP License 3.01; see `NOTICE`.
